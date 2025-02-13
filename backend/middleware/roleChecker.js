@@ -20,7 +20,7 @@ export const checkStudentRole = async (req, res, next) => {
 
 export const checkAdminRole = async (req, res, next) => {
   let { email } = req.body;
-  const user = await Student.findOne({ email });
+  const user = await Admin.findOne({ email });
   if (!user) {
     return res.status(500).json({
       success: false,

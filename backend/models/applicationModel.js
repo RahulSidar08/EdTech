@@ -5,12 +5,10 @@ const applicationSchema = new mongoose.Schema(
     scholarship : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "Scholarship",
-        required : true
     },
     Applicant: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Student",
-      required: true
     },
     status: {
       type: String,

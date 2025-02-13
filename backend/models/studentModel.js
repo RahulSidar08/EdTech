@@ -37,6 +37,11 @@ const studentSchema = new mongoose.Schema(
         default: "",
       },
     },
+    appliedScholarships: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Scholarship",
+    }],
+    
     assignedAgent: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Agent", // Referencing Agent Schema
