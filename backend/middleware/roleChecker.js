@@ -35,7 +35,7 @@ export const checkAdminRole = async (req, res, next) => {
 
 export const checkAgentRole = async (req, res, next) => {
   let { email } = req.body;
-  const user = await Student.findOne({ email });
+  const user = await Agent.findOne({ email });
   if (!user) {
     return res.status(500).json({
       success: false,

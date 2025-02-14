@@ -1,44 +1,15 @@
 import { Agent } from "../models/agentModel.js";
 import { Student } from "../models/studentModel.js";
 import { Admin } from "../models/adminModel.js";
+import { Scholarship } from "../models/scholarshipModel.js";
+import { Application } from "../models/applicationModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import doetnv from "dotenv";
 doetnv.config();
 import createTokenAndSaveCookie from "../utils/generateToken.js";
 
-export const getStudents = async (req, res) => {
-    try {
-      let agentId = req.id;
-  
-      // Fetch students assigned to this agent
-      const students = await Student.find({ assignedAgent: agentId });
-  
-      // If no students are assigned
-      if (students.length === 0) {
-        return res.status(404).json({
-          success: false,
-          message: "No students assigned to you",
-        });
-      }
-  
-      // Return the list of assigned students
-      return res.status(200).json({
-        success: true,
-        message: "Students fetched successfully",
-        students,
-      });
-    } catch (error) {
-      console.error("Error in getting students:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Server Error",
-        error,
-      });
-    }
-  };
-  
-  export const agentRegister = async (req, res) => {
+export const agentRegister = async (req, res) => {
     try {
       let { fullname, email, phoneNumber, password, role, agencyDetails } =
         req.body;
@@ -78,7 +49,7 @@ export const getStudents = async (req, res) => {
           agencyAddress,
         },
       });
-  
+      
       return res.status(200).json({
         success: true,
         message: "Account Created Successfully",
@@ -92,3 +63,106 @@ export const getStudents = async (req, res) => {
       });
     }
   };
+
+  
+  export const getStudents = async (req, res) => {
+      try {
+        let agentId = req.id;
+    
+        // Fetch students assigned to this agent
+        const students = await Student.find({ assignedAgent: agentId });
+    
+        // If no students are assigned
+        if (students.length === 0) {
+          return res.status(404).json({
+            success: false,
+            message: "No students assigned to you",
+          });
+        }
+    
+        // Return the list of assigned students
+        return res.status(200).json({
+          success: true,
+          message: "Students fetched successfully",
+          students,
+        });
+      } catch (error) {
+        console.error("Error in getting students:", error);
+        return res.status(500).json({
+          success: false,
+          message: "Server Error",
+          error,
+        });
+      }
+    };
+
+
+  export const viewStudentScholarship = async (req,res) => {
+    try {
+      let usrId = req.id;
+      let scholarships = await Student.find(appliedScholarships);
+      if(scholarships.length === 0){
+        return res.status(200).json({
+          success : true,
+          message : "Student has not Applied for any scholarship yet"
+        })
+      }
+
+      return res.status(200).json({
+        success : true,
+        scholarships
+      })
+
+    } catch (error) {
+      console.error("Error in getting students:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Server Error",
+        error,
+      });
+    }
+  }
+
+  export const updateStatus = async (req, res) => {
+    try {
+      let applicationId = req.params.id;
+      let { status } = req.body;
+      let agentId = req.id; // Assuming the authenticated agent's ID is stored in req.user
+  
+      // Check if the status is valid
+      const validStatuses = ["Pending", "Under Review", "Accepted", "Rejected"];
+      if (!validStatuses.includes(status)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid status"
+        });
+      }
+  
+      // Find the application
+      let application = await Application.findById(applicationId);
+      if (!application) {
+        return res.status(404).json({
+          success: false,
+          message: "Application not found"
+        });
+      }
+  
+      // Update the status and the person who updated it
+      application.status = status;
+      application.updatedBy = agentId;
+      await application.save(); // Await the save
+  
+      return res.status(200).json({
+        success: true,
+        message: "Status Updated Successfully"
+      });
+    } catch (error) {
+      console.error("Error in Updating Status:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Server Error",
+        error,
+      });
+    }
+  };
+  
