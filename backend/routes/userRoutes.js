@@ -6,7 +6,7 @@ import { isAuthenticated } from "../middleware/isAuthenticated.js";
 import { applyForScholarship } from "../controller/scholarship.controller.js";
 import { studentRegister } from "../controller/student.controller.js";
 
-router.post("/register",checkStudentRole, studentRegister)
+router.post("/register",studentRegister)
 router.post("/login",checkStudentRole, login)
 router.post("/logout",logout);
 router.get("/details", isAuthenticated , getDetails)

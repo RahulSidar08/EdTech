@@ -6,7 +6,7 @@ import { agentRegister, getStudents } from "../controller/agent.controller.js";
 import {isAuthenticated} from "../middleware/isAuthenticated.js"
 
 
-router.post("/register",checkAgentRole,  agentRegister)
+router.post("/register", agentRegister)
 router.post("/login",checkAgentRole, login)
 router.post("/getStudent",isAuthenticated ,getStudents)
 export default router;

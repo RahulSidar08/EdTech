@@ -3,24 +3,42 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { errorHandler, successHandler } from "../ToastMessage/toast";
+import axios from "axios";
 export const Login = () => {
   const [input, setInput] = useState({
     email: "",
     password: "",
     role: "",
   });
-
+  const navigate = useNavigate()
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e);
     console.log(input);
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/${input.role}/login`,
+        input,
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log(res);
+      successHandler(res.data.message)
+      setTimeout(() => {
+        navigate("/")
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

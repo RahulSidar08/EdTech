@@ -27,7 +27,7 @@ const agentSchema = new mongoose.Schema(
     },
     agencyDetails: {
       agencyName: { type: String, required: true },
-      agencyAddress: { type: String, required: true },
+      agencyAddress: { type: String },
     },
     assignedStudents: [
       {

@@ -5,7 +5,7 @@ import { checkAdminRole } from "../middleware/roleChecker.js";
 import {isAuthenticated} from "../middleware/isAuthenticated.js"
 import { createScholarship } from "../controller/scholarship.controller.js";
 import { adminRegister, assignAgent } from "../controller/admin.controller.js";
-router.post("/register", checkAdminRole, adminRegister)
+router.post("/register", adminRegister)
 router.post("/login", checkAdminRole, login)
 router.post("/postScholarship", isAuthenticated , createScholarship)
 router.post("/assign",isAuthenticated,assignAgent)

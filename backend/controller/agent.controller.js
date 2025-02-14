@@ -11,9 +11,9 @@ import createTokenAndSaveCookie from "../utils/generateToken.js";
 
 export const agentRegister = async (req, res) => {
     try {
-      let { fullname, email, phoneNumber, password, role, agencyDetails } =
-        req.body;
-      let { agencyName, agencyAddress } = agencyDetails;
+      console.log(req.body)
+      let { fullname, email, phoneNumber, password, role, agencyDetails } = req.body;
+      let { agencyName } = agencyDetails;
   
       if (
         !fullname ||
@@ -45,8 +45,7 @@ export const agentRegister = async (req, res) => {
         password: hash,
         role,
         agencyDetails: {
-          agencyName,
-          agencyAddress,
+          agencyName
         },
       });
       
