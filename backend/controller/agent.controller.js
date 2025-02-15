@@ -96,31 +96,47 @@ export const agentRegister = async (req, res) => {
     };
 
 
-  export const viewStudentScholarship = async (req,res) => {
-    try {
-      let usrId = req.id;
-      let scholarships = await Student.find(appliedScholarships);
-      if(scholarships.length === 0){
+    export const viewStudentScholarship = async (req, res) => {
+      try {
+        let userId = req.id;
+        let studentId = req.params.id;
+        console.log("Agent ID:", userId);
+    
+        // Fetch student by ID and populate appliedScholarships
+        let student = await Student.findById(studentId).populate('appliedScholarships');
+    
+        // Check if student exists
+        if (!student) {
+          return res.status(404).json({
+            success: false,
+            message: "Student not found",
+          });
+        }
+    
+        // Check if student has applied for any scholarships
+        if (!student.appliedScholarships || student.appliedScholarships.length === 0) {
+          return res.status(200).json({
+            success: true,
+            message: "Student has not Applied for any scholarship yet",
+            scholarships: [],
+          });
+        }
+    
         return res.status(200).json({
-          success : true,
-          message : "Student has not Applied for any scholarship yet"
-        })
+          success: true,
+          scholarships: student.appliedScholarships
+        });
+    
+      } catch (error) {
+        console.error("Error in getting student scholarships:", error);
+        return res.status(500).json({
+          success: false,
+          message: "Server Error",
+          error,
+        });
       }
-
-      return res.status(200).json({
-        success : true,
-        scholarships
-      })
-
-    } catch (error) {
-      console.error("Error in getting students:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Server Error",
-        error,
-      });
-    }
-  }
+    };
+    
 
   export const updateStatus = async (req, res) => {
     try {

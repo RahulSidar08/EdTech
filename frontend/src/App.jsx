@@ -9,6 +9,7 @@ import { Login } from './components/authentication/Login'
 import { Signup } from './components/authentication/Signup'
 import { Sidebar } from './components/admin/Sidebar'
 import { Right } from './components/admin/Right'
+import { Agentpanel } from './components/agent/Agentpanel'
 
 
 const appRouter = createBrowserRouter([
@@ -36,6 +37,13 @@ const appRouter = createBrowserRouter([
     element : <div>
       <Navbar/>
       <Right/>
+    </div>
+  },
+  {
+    path : "/agent",
+    element : <div>
+      <Navbar/>
+      <Agentpanel/>
     </div>
   }
 ])
