@@ -106,6 +106,7 @@ export const getAllStudents = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Student fetch successfully",
+      students
     });
   } catch (error) {
     console.error("Error in getting student:", error);
@@ -130,6 +131,7 @@ export const getAllAgents = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Agent fetch successfully",
+      agents
     });
   } catch (error) {
     console.error("Error in getting agent:", error);

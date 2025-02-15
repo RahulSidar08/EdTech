@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import { Darkmode } from "./Darkmode";
 import { FaCaretDown } from "react-icons/fa";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { Button } from "../ui/button";
+import Logout from "../authentication/Logout";
+import Cookies from "js-cookie";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@radix-ui/react-popover";
 
-import { Button } from "../ui/button";
-
 export const Navbar = () => {
+  let token = localStorage.getItem("token")
   return (
     <>
       <div className="flex w-full justify-between px-20 items-center p-2 bg-white shadow-lg text-black dark:bg-gray-700 dark:text-white duration-50">
@@ -56,24 +58,28 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <div className="flex space-x-2">
-              <Link to="/login" >Login</Link>
-              <Link to="/signup" >Signup</Link>
-            </div>
-
+            {token ? (
+              <div>
+                <Logout />
+              </div>
+            ) : (
+              <div className="flex space-x-2">
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link>
+              </div>
+            )}
             <div className="flex items-center space-x-2">
               <Popover>
                 <PopoverTrigger asChild>
                   <Avatar className="cursor-pointer">
-                    <AvatarImage className="w-10 rounded-2xl"
+                    <AvatarImage
+                      className="w-10 rounded-2xl"
                       src="https://github.com/shadcn.png"
                       alt="@shadcn"
                     />
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="w-80 flex flex-col justify-center">
-
-                </PopoverContent>
+                <PopoverContent className="w-80 flex flex-col justify-center"></PopoverContent>
               </Popover>
             </div>
           </div>

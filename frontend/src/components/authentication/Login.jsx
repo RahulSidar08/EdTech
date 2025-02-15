@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { errorHandler, successHandler } from "../ToastMessage/toast";
 import axios from "axios";
+
 export const Login = () => {
   const [input, setInput] = useState({
     email: "",
@@ -32,9 +33,15 @@ export const Login = () => {
       );
 
       console.log(res);
+      localStorage.setItem("token",res.data.token)
       successHandler(res.data.message)
       setTimeout(() => {
-        navigate("/")
+        if(input.role === "admin")
+        {
+          navigate("/admin")
+        }else{
+          navigate("/")
+        }
       }, 3000);
     } catch (error) {
       console.log(error);

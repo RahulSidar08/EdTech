@@ -87,13 +87,23 @@ export const getDetails = async (req, res) => {
   }
 };
 
-
 export const logout = async (req, res) => {
   try {
-    return res.status(200).cookie("jwt", "", { maxAge: 0 }).json({
-      message: "Logged out successfully.",
-      success: true,
-    });
+    return res
+      .status(200)
+      .cookie(
+        "jwt",
+        {
+          httpOnly: true,
+          sameSite: "Lax", // or "None" if using HTTPS
+          secure: process.env.NODE_ENV === "production",
+        },
+        { maxAge: 0 }
+      )
+      .json({
+        message: "Logged out successfully.",
+        success: true,
+      });
   } catch (error) {
     console.log(error);
   }
