@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Navbar } from './components/shared/Navbar'
 import { Button } from './components/ui/button'
-import Footer from './components/shared/Footer'
 import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router'
 import { Login } from './components/authentication/Login'
@@ -10,14 +8,16 @@ import { Signup } from './components/authentication/Signup'
 import { Sidebar } from './components/admin/Sidebar'
 import { Right } from './components/admin/Right'
 import { Agentpanel } from './components/agent/Agentpanel'
-
+import { Navbar } from './components/Home/Navbar.jsx'
+import { Herosection } from './components/Home/Herosection.jsx'
 
 const appRouter = createBrowserRouter([
   {
     path : "/",
     element : <div>
       <Navbar/>
-      <Footer/>
+      <br />
+      <Herosection/>
     </div>
   },
   {
