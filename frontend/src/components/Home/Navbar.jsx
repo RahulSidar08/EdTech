@@ -18,7 +18,7 @@ export const Navbar = () => {
   let token = localStorage.getItem("token")
   return (
     <>
-      <header className="bg-transparent text-blue shadow-md p-6 flex justify-between items-center w-full fixed z-[1000] dark:text-white duration-50 dark:bg-transparent">
+      <header className="bg-transparent text-blue shadow-md p-5 flex justify-between items-center w-full fixed z-[1000] dark:text-white duration-50 dark:bg-transparent">
         <NavLink to="/" className="text-2xl font-bold">
           EdTech Platform
         </NavLink>
