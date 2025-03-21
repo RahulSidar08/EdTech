@@ -6,17 +6,16 @@ import { FAQ } from "./FAQ/FAQ";
 import {Footer} from "./Footer/Footer.jsx";
 import { useSelector } from "react-redux";
 import { store } from "@/redux/store";
+import { useGetStudents } from "@/hooks/useGetStudents";
+import { useGetAgents } from "@/hooks/useGetAgents";
 
 export const Herosection = () => {
-  const { loading, user } = useSelector((store) => store.auth);
-
-  console.log("Immediately Rendered:", loading, user);
-
-  useEffect(() => {
-    if (user) {
-      console.log("User is now available:", loading, user);
-    }
-  }, [user]); // Run only when 'user' changes and is not null
+  useGetStudents()
+  useGetAgents()
+  // const { loading, user } = useSelector((store) => store.auth);
+  const {students,agents} = useSelector((store) => store.entities)
+  console.log("Fetched all user data for admin: ", students)
+  console.log("Fetched all agents data for admin: ",agents)
   return (
     <>
       <div

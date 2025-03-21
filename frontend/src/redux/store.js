@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist'
 import authReducer from "./authSlice.js"
+import entityReducer from "./entitiesSlice.js"
 import storage from 'redux-persist/lib/storage'
 const persistConfig = {
   key: 'root',
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth : authReducer,
+  entities : entityReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
