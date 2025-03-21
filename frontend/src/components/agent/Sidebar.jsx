@@ -37,33 +37,32 @@ export const Sidebar = () => {
   }
   return (
     <>
-      <div className="min-h-[500px] w-[20%] bg-white flex flex-col gap-5 justify-center border-r-2 border-b-2 border-sky-400 py-10">
-        <div className="py-2  flex justify-center items-center">
-          <Link
-            onClick={getStudents}
-            className="bg-red-200 p-5 px-5 py-5 w-full flex justify-center"
-            to="/agent"
-          >
-            Students
-          </Link>
-        </div>
-        <div className="py-2 flex justify-center">
-          <Link
-            className="bg-red-200 p-5 px-5 py-5 w-full flex justify-center"
-            to="/agent"
-          >
-            Agents
-          </Link>
-        </div>
-        <div className="py-2 flex justify-center">
-          <Link
-            className="bg-red-200 p-5 px-5 py-5 w-full flex justify-center"
-            to="/agent"
-          >
-            Student Scholarship 
-          </Link>
-        </div>
-      </div>
+    <div className="h-screen w-80 bg-gray-900 text-white p-6 flex flex-col justify-center space-y-6">
+      {/* <h1 className="text-2xl font-bold text-center">Admin Dashboard</h1> */}
+      <nav className="flex flex-col space-y-4">
+        <Link 
+          className="px-4 w-full py-2 bg-blue-600 rounded-lg text-center text-white hover:bg-blue-500 transition duration-300"
+          to="/students"
+        >
+          📚 Students
+        </Link>
+        <Link 
+          className="px-4 py-2 bg-green-600 rounded-lg text-center text-white hover:bg-green-500 transition duration-300"
+          to="/admins"
+        >
+          👤 Admins
+        </Link>
+        <Link 
+          className="px-4 py-2 bg-yellow-600 rounded-lg text-center text-white hover:bg-yellow-500 transition duration-300"
+          to="/scholarships"
+        >
+          🎓 Scholarships
+        </Link>
+        <Link className="px-4 py-2 bg-yellow-600 rounded-lg text-center text-white hover:bg-yellow-500 transition duration-300 relative top-20">
+        Logout 
+        </Link>
+      </nav>
+    </div>
     </>
   );
 };

@@ -35,17 +35,15 @@ const appRouter = createBrowserRouter([
   {
     path : "/admin",
     element : <div>
-      <Navbar/>
       <Right/>
     </div>
   },
   {
     path : "/agent",
     element : <div>
-      <Navbar/>
       <Agentpanel/>
     </div>
-  }
+  },
 ])
 
 function App() {

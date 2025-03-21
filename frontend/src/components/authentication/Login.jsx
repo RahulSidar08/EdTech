@@ -7,6 +7,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { errorHandler, successHandler } from "../ToastMessage/toast";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { store } from "@/redux/store";
+import { setLoading, setUser } from "@/redux/authSlice";
 
 export const Login = () => {
   const [input, setInput] = useState({
@@ -15,6 +18,8 @@ export const Login = () => {
     role: "",
   });
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const {loading , user} = useSelector(store => store.auth)
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -24,6 +29,7 @@ export const Login = () => {
     console.log(e);
     console.log(input);
     try {
+      dispatch(setLoading(true))
       const res = await axios.post(
         `http://localhost:5000/${input.role}/login`,
         input,
@@ -33,6 +39,8 @@ export const Login = () => {
       );
 
       console.log(res);
+      console.log(res.data.user)
+      dispatch(setUser(res.data.user))
       localStorage.setItem("token",res.data.token)
       successHandler(res.data.message)
       setTimeout(() => {

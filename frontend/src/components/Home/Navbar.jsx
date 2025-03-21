@@ -19,10 +19,10 @@ export const Navbar = () => {
   return (
     <>
       <header className="bg-transparent text-blue shadow-md p-5 flex justify-between items-center w-full fixed z-[1000] dark:text-white duration-50 dark:bg-transparent">
-        <NavLink to="/" className="text-2xl font-bold">
+        <NavLink to="/" className="text-2xl font-bold text-blue-600">
           EdTech Platform
         </NavLink>
-        <ul className="flex space-x-6">
+        <ul className="flex space-x-6 text-blue-600">
           <li>
             <div className="flex justify-center items-center p-2">
               <Darkmode />
