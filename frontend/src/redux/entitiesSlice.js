@@ -3,7 +3,8 @@ import  { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     students : [],
-    agents : []
+    agents : [],
+    scholarships : []
 }
 
 const entitiesSlice = createSlice({
@@ -16,10 +17,14 @@ const entitiesSlice = createSlice({
 
         setAgent : (state,action) => {
             state.agents = action.payload
+        },
+
+        setScholarship : (state,action) => {
+            state.scholarships = action.payload
         }
     }
 })
 
 
-export const {setStudent,setAgent} = entitiesSlice.actions
+export const {setStudent,setAgent,setScholarship} = entitiesSlice.actions
 export default entitiesSlice.reducer

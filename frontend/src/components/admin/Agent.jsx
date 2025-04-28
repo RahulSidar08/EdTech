@@ -50,6 +50,9 @@ export const Agent = () => {
                 <div className="text-gray-500 text-sm">
                   Updated At: {new Date(item.updatedAt).toLocaleString()}
                 </div>
+                <div className="text-gray-500 text-sm">
+                  Agent ID: {item._id}
+                </div>
               </div>
             ))}
           </div>

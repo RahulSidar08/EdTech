@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 
-export const Sidebar = ({ activePage, setActivePage }) => {
+export const AgentSidebar = ({ activePage, setActivePage }) => {
   const sidebar = [
     "Agents",
     "Students",

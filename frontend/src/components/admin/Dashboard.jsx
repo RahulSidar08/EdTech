@@ -3,18 +3,13 @@ import { Link } from "react-router-dom";
 import { Student } from "./Student";
 import { Agent } from "./Agent";
 import { Sidebar } from "./Sidebar";
+import ScholarshipForm from "./ScholarshipForm";
+import { AssignAgent } from "./AssignAgent";
+import { Scholarship } from "./Scholarship";
 
 export default function Dashboard() {
   const [activePage, setActivePage] = useState("");
   console.log(activePage)
-  const pageComponents = {
-    dashboard: <Dashboard />,
-    agents: <Agent />,
-    students: <Student />,
-    // scholarship: <Scholarship />,
-    // 'assign-agent': <AssignAgent />,
-    // 'post-scholarship': <PostScholarship />,
-  };
   const renderPage = () => {
     switch (activePage) {
       case 'Students':
@@ -23,6 +18,12 @@ export default function Dashboard() {
         return <Agent />;
       case 'profile':
         return <ProfilePage />;
+      case 'Scholarship':
+        return <Scholarship/>;
+      case 'Create Scholarship':
+        return <ScholarshipForm/>;
+      case 'Assign-Agent':
+        return <AssignAgent/>;
       default:
         return <div>Select a page</div>;
     }

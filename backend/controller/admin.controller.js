@@ -54,7 +54,6 @@ export const adminRegister = async (req, res) => {
 export const assignAgent = async (req, res) => {
   try {
     let { studentId, agentId } = req.body;
-
     // Check if required fields are present
     if (!studentId || !agentId) {
       return res.status(400).json({

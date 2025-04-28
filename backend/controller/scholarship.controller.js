@@ -5,7 +5,6 @@ export const createScholarship = async (req,res) => {
     try {
         let {title, description,eligibility,amount,deadline} = req.body;
         let userId = req.id;
-
         if(!title || !description || !eligibility || !amount || !deadline)
         {
             return res.status(400).json({

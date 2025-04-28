@@ -1,4 +1,4 @@
-import { Sidebar } from './Sidebar'
+import { AgentSidebar} from './AgentSidebar'
 import React from 'react'
 
 export const Agentpanel = () => {
@@ -6,7 +6,7 @@ export const Agentpanel = () => {
   return (
     <>
     <div className='flex  gap-10'>
-        <Sidebar/>
+        <AgentSidebar/>
         <div>
           This is Agent panel 
         </div>

@@ -63,6 +63,9 @@ export const Student = () => {
                 <div className="text-gray-500 text-sm">
                   Updated At: {new Date(item.updatedAt).toLocaleString()}
                 </div>
+                <div className="text-gray-500 text-sm">
+                  Student  ID: {item._id}
+                </div>
               </div>
             ))}
           </div>
