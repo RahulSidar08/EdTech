@@ -11,14 +11,13 @@ export const useGetStudents = () => {
         const getStudents = async () => {
             try {
                 let res = await axios.get(`${USER_API_END_POINT}/admin/getStudents`,{withCredentials:true})
-                // console.log(res)
-                // console.log("student: ",res.data.students)
+                console.log(res)
+                console.log("student: ",res.data.students)
                 dispatch(setStudent(res.data.students))
             } catch (error) {
                 console.log(error)
             }
         }
-
         getStudents()
     },[])
 }

@@ -11,8 +11,8 @@ export const useGetAgents = () => {
         let res = await axios.get(`${USER_API_END_POINT}/admin/getAgents`, {
           withCredentials: true,
         });
-        // console.log("admin: ",res.data);
-        // console.log(res.data.agents)
+        console.log("admin: ",res.data);
+        console.log(res.data.agents)
         dispatch(setAgent(res.data.agents))
       } catch (error) {
         console.log(error);

@@ -5,11 +5,10 @@ import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router'
 import { Login } from './components/authentication/Login'
 import { Signup } from './components/authentication/Signup'
-import { Sidebar } from './components/admin/Sidebar'
-import { Right } from './components/admin/Right'
 import { Agentpanel } from './components/agent/Agentpanel'
 import { Navbar } from './components/Home/Navbar.jsx'
 import { Herosection } from './components/Home/Herosection.jsx'
+import Dashboard from './components/admin/Dashboard'
 
 const appRouter = createBrowserRouter([
   {
@@ -35,7 +34,7 @@ const appRouter = createBrowserRouter([
   {
     path : "/admin",
     element : <div>
-      <Right/>
+      <Dashboard/>
     </div>
   },
   {

@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import doetnv from "dotenv";
 doetnv.config();
 import createTokenAndSaveCookie from "../utils/generateToken.js";
+import { Scholarship } from "../models/scholarshipModel.js";
 
 export const adminRegister = async (req, res) => {
   try {
@@ -105,7 +106,7 @@ export const getAllStudents = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Student fetch successfully",
-      students
+      students,
     });
   } catch (error) {
     console.error("Error in getting student:", error);
@@ -130,7 +131,7 @@ export const getAllAgents = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Agent fetch successfully",
-      agents
+      agents,
     });
   } catch (error) {
     console.error("Error in getting agent:", error);
@@ -142,4 +143,27 @@ export const getAllAgents = async (req, res) => {
   }
 };
 
+export const getAllScholarship = async (req, res) => {
+  try {
+    let scholarships = await Scholarship.find();
+    if (!scholarships) {
+      return res.status(200).json({
+        success: true,
+        message: "No Scholarship Found",
+      });
+    }
 
+    return res.status(200).json({
+      success: true,
+      message: "Scholarship fetched Successfully",
+      scholarships,
+    });
+  } catch (error) {
+    console.error("Error in getting scholarship:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error,
+    });
+  }
+};

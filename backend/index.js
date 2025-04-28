@@ -11,6 +11,7 @@ import connectdb from "./config/connectDb.js";
 import userRoutes from "./routes/userRoutes.js"
 import adminRoute from "./routes/adminRoute.js";
 import agentRoute from "./routes/agentRoute.js";
+import { get } from "mongoose"
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
