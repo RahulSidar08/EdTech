@@ -4,11 +4,8 @@ import { IoIosLogOut } from "react-icons/io";
 
 export const AgentSidebar = ({ activePage, setActivePage }) => {
   const sidebar = [
-    "Agents",
     "Students",
-    "Scholarship",
-    "Assign-Agent",
-    "Create Scholarship",
+    "Application",
   ];
 
   useEffect(() => {

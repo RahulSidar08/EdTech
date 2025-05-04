@@ -2,10 +2,10 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { Label } from "../ui/label";
+import { Input } from "../../components/ui/input";
+import { Textarea } from "../../components/ui/textarea";
+import { Button } from "../../components/ui/button";
+import { Label } from "../../components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -18,7 +18,7 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { USER_API_END_POINT } from "@/utils/constant";
-import { errorHandler, successHandler } from "../ToastMessage/toast";
+import { errorHandler, successHandler } from "../../ToastMessage/toast";
 import { ToastContainer } from "react-toastify";
 export default function ScholarshipForm() {
   const {

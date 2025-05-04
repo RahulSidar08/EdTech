@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 import { errorHandler, successHandler } from "../ToastMessage/toast";
 import axios from "axios";
 import Cookies from "js-cookie";

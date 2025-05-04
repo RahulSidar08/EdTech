@@ -1,13 +1,13 @@
 import React, { use, useEffect } from "react";
-import { Feature } from "./Features/Feature";
-import { Testimonial } from "./Testimonials/Testimonial";
-import { Advertise } from "./Testimonials/Advertise";
-import { FAQ } from "./FAQ/FAQ";
-import {Footer} from "./Footer/Footer.jsx";
 import { useSelector } from "react-redux";
 import { store } from "@/redux/store";
 import { useGetStudents } from "@/hooks/useGetStudents";
 import { useGetAgents } from "@/hooks/useGetAgents";
+import { Feature } from "./Feature";
+import { Testimonial } from "./Testimonial";
+import { Advertise } from "./Advertise";
+import { FAQ } from "./FAQ";
+import { Footer } from "./Footer";
 
 export const Herosection = () => {
   useGetStudents()

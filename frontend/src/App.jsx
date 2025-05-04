@@ -3,12 +3,17 @@ import './App.css'
 import { Button } from './components/ui/button'
 import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router'
-import { Login } from './components/authentication/Login'
-import { Signup } from './components/authentication/Signup'
-import { Agentpanel } from './components/agent/Agentpanel'
-import { Navbar } from './components/Home/Navbar.jsx'
-import { Herosection } from './components/Home/Herosection.jsx'
-import Dashboard from './components/admin/Dashboard'
+import { Login } from './Auth/Login'
+import { Signup } from './Auth/Signup'
+import { Agentpanel } from './features/agent/Agentpanel'
+import { Navbar } from './Home/Navbar.jsx'
+import { Herosection } from './Home/Herosection.jsx'
+import Dashboard from './features/admin/Dashboard'
+import { Scholarship } from './components/pages/Scholarship'
+import { MyApplication } from './features/student/MyApplication'
+import { MyProfile } from './features/student/MyProfile'
+import { EditProfile } from './features/student/EditProfile'
+import { PageNotFound } from './components/pages/PageNotFound'
 
 const appRouter = createBrowserRouter([
   {
@@ -18,6 +23,20 @@ const appRouter = createBrowserRouter([
       <br />
       <Herosection/>
     </div>
+  },
+  {
+    path : "/My-Application",
+    element : <div>
+      <MyApplication/>
+    </div>
+  },
+  {
+    path: "/edit",
+    element: <EditProfile />
+  },
+  {
+    path: "/profile",
+    element: <MyProfile />
   },
   {
     path : "/login",
@@ -41,6 +60,18 @@ const appRouter = createBrowserRouter([
     path : "/agent",
     element : <div>
       <Agentpanel/>
+    </div>
+  },
+  {
+    path : "/scholarship",
+    element : <div>
+      <Scholarship/>
+    </div>
+  },
+  {
+    path : "*",
+    element : <div>
+      <PageNotFound/>
     </div>
   },
 ])

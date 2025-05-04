@@ -4,34 +4,35 @@ const scholarshipSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     eligibility: {
       degree: { type: String, required: true },
-      location: { type: String }
+      location: { type: String },
     },
     amount: {
       type: Number,
-      required: true
+      required: true,
     },
     deadline: {
       type: Date,
-      required: true
+      required: true,
     },
     addedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Admin" // or "Agent"
+      ref: "Admin", // or "Agent"
     },
     applications: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Application',
-        }
-    ]
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Application",
+      },
+    ],
+    applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }],
   },
   { timestamps: true }
 );

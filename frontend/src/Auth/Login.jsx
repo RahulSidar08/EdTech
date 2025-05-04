@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "@/components/ui/input";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
