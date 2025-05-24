@@ -16,14 +16,13 @@ A full-stack web application designed to streamline the scholarship application 
 
 - Admin Panel: Admins can manage all users, assign agents to students, and monitor scholarship activities.
 
+- Agent Functionality: Agents are assigned specific students and can update the application status of their assigned students directly from their dashboard.
+
+- Tech Blog Integration: Stay up to date with the latest trends through an integrated section that displays recent tech blogs.
+
 - Secure Auth: JWT-based authentication with hashed passwords using bcrypt.
 
 - Modern UI: Responsive interface built with React.js and Tailwind CSS for a smooth user experience.
-
-
-
-
-
 
 
 ## Tech Stack
