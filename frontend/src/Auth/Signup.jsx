@@ -79,24 +79,25 @@ export const Signup = () => {
         }
       );
       console.log("Response: ", res.data);
-      successHandler(res.data.message)
+      successHandler(res.data.message);
     } catch (error) {
       console.log("ErrorData: ", error);
-      console.log(error.response.data.message)
-      let message = error.response.data.message || error.message
-      errorHandler(message)
+      console.log(error.response.data.message);
+      let message = error.response.data.message || error.message;
+      errorHandler(message);
     }
   };
 
   return (
     <>
-      <div>
+      <div className="px-4">
         <div className="flex items-center justify-center max-w-7xl mx-auto">
           <form
             onSubmit={handleSubmit}
-            className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
+            className="w-full max-w-md border border-gray-200 rounded-md p-4 my-10 bg-white shadow-md"
           >
-            <h1 className="font-bold text-xl mb-5">Sign Up</h1>
+            <h1 className="font-bold text-xl mb-5 text-center">Sign Up</h1>
+
             <div className="my-2">
               <Label>Full Name</Label>
               <Input
@@ -107,6 +108,7 @@ export const Signup = () => {
                 onChange={changeEventHandler}
               />
             </div>
+
             <div className="my-2">
               <Label>Email</Label>
               <Input
@@ -117,6 +119,7 @@ export const Signup = () => {
                 onChange={changeEventHandler}
               />
             </div>
+
             <div className="my-2">
               <Label>Phone Number</Label>
               <Input
@@ -127,6 +130,7 @@ export const Signup = () => {
                 onChange={changeEventHandler}
               />
             </div>
+
             <div className="my-2">
               <Label>Password</Label>
               <Input
@@ -137,8 +141,9 @@ export const Signup = () => {
                 onChange={changeEventHandler}
               />
             </div>
-            <div className="flex items-center justify-between">
-              <RadioGroup className="flex items-center gap-4 my-5">
+
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 my-5">
+              <RadioGroup className="flex flex-col md:flex-row gap-4">
                 <div className="flex items-center space-x-2">
                   <Input
                     type="radio"
@@ -146,6 +151,7 @@ export const Signup = () => {
                     value="student"
                     className="cursor-pointer"
                     onChange={changeEventHandler}
+                    id="r1"
                   />
                   <Label htmlFor="r1">Student</Label>
                 </div>
@@ -156,6 +162,7 @@ export const Signup = () => {
                     value="agent"
                     className="cursor-pointer"
                     onChange={changeEventHandler}
+                    id="r2"
                   />
                   <Label htmlFor="r2">Agent</Label>
                 </div>
@@ -166,11 +173,13 @@ export const Signup = () => {
                     value="admin"
                     className="cursor-pointer"
                     onChange={changeEventHandler}
+                    id="r3"
                   />
-                  <Label htmlFor="r2">Admin</Label>
+                  <Label htmlFor="r3">Admin</Label>
                 </div>
               </RadioGroup>
             </div>
+
             {input.role === "student" && (
               <div>
                 <div className="my-1">
@@ -185,7 +194,7 @@ export const Signup = () => {
                   />
                 </div>
                 <div className="my-1">
-                  <Label>Degree </Label>
+                  <Label>Degree</Label>
                   <Input
                     type="text"
                     name="degree"
@@ -200,8 +209,8 @@ export const Signup = () => {
                   <Input
                     type="text"
                     name="graduationYear"
-                    placeholder="Enter your graduation Year"
-                    value={input.university}
+                    placeholder="Enter your graduation year"
+                    value={input.graduationYear}
                     onChange={changeEventHandler}
                     required
                   />
@@ -222,14 +231,17 @@ export const Signup = () => {
                 />
               </div>
             )}
-            <div className="flex items-center gap-2 mt-5">
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mt-5">
               <Label>Profile</Label>
               <Input accept="image/*" type="file" className="cursor-pointer" />
             </div>
+
             <Button type="submit" className="w-full my-4">
               Signup
             </Button>
-            <span className="text-sm">
+
+            <span className="text-sm block text-center">
               Already have an account?{" "}
               <Link to="/login" className="text-blue-600">
                 Login

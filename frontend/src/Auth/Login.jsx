@@ -17,9 +17,9 @@ export const Login = () => {
     password: "",
     role: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {loading , user} = useSelector(store => store.auth)
+  const { loading, user } = useSelector((store) => store.auth);
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -29,7 +29,7 @@ export const Login = () => {
     console.log(e);
     console.log(input);
     try {
-      dispatch(setLoading(true))
+      dispatch(setLoading(true));
       const res = await axios.post(
         `http://localhost:5000/${input.role}/login`,
         input,
@@ -39,16 +39,15 @@ export const Login = () => {
       );
 
       console.log(res);
-      console.log(res.data.user)
-      dispatch(setUser(res.data.user))
-      localStorage.setItem("token",res.data.token)
-      successHandler(res.data.message)
+      console.log(res.data.user);
+      dispatch(setUser(res.data.user));
+      localStorage.setItem("token", res.data.token);
+      successHandler(res.data.message);
       setTimeout(() => {
-        if(input.role === "admin")
-        {
-          navigate("/admin")
-        }else{
-          navigate("/")
+        if (input.role === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/");
         }
       }, 3000);
     } catch (error) {
@@ -57,13 +56,14 @@ export const Login = () => {
   };
 
   return (
-    <div>
+    <div className="px-4">
       <div className="flex items-center justify-center max-w-7xl mx-auto mt-10">
         <form
           onSubmit={handleSubmit}
-          className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
+          className="w-full max-w-md border border-gray-200 rounded-md p-4 my-10 bg-white shadow-md"
         >
-          <h1 className="font-bold text-xl mb-5">Login</h1>
+          <h1 className="font-bold text-xl mb-5 text-center">Login</h1>
+
           <div className="my-2">
             <Label>Email</Label>
             <Input
@@ -74,6 +74,7 @@ export const Login = () => {
               placeholder="Enter your email"
             />
           </div>
+
           <div className="my-2">
             <Label>Password</Label>
             <Input
@@ -84,8 +85,9 @@ export const Login = () => {
               placeholder="Enter password"
             />
           </div>
-          <div className="flex items-center justify-between">
-            <RadioGroup className="flex items-center gap-4 my-5">
+
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 my-5">
+            <RadioGroup className="flex flex-col md:flex-row gap-4">
               <div className="flex items-center space-x-2">
                 <Input
                   type="radio"
@@ -93,6 +95,7 @@ export const Login = () => {
                   value="student"
                   onChange={changeEventHandler}
                   className="cursor-pointer"
+                  id="r1"
                 />
                 <Label htmlFor="r1">Student</Label>
               </div>
@@ -103,6 +106,7 @@ export const Login = () => {
                   value="agent"
                   onChange={changeEventHandler}
                   className="cursor-pointer"
+                  id="r2"
                 />
                 <Label htmlFor="r2">Agent</Label>
               </div>
@@ -113,8 +117,9 @@ export const Login = () => {
                   value="admin"
                   onChange={changeEventHandler}
                   className="cursor-pointer"
+                  id="r3"
                 />
-                <Label htmlFor="r2">Admin</Label>
+                <Label htmlFor="r3">Admin</Label>
               </div>
             </RadioGroup>
           </div>
@@ -122,7 +127,8 @@ export const Login = () => {
           <Button type="submit" className="w-full my-4">
             Login
           </Button>
-          <span className="text-sm">
+
+          <span className="text-sm block text-center">
             Don't have an account?{" "}
             <Link to="/signup" className="text-blue-600">
               Signup

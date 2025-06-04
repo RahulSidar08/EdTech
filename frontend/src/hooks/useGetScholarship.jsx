@@ -6,7 +6,6 @@ import { setScholarship } from "@/redux/entitiesSlice";
 export const useGetScholarship = () => {
   const dispatch = useDispatch();
   let user = useSelector((state) => state.auth.user)
-  console.log(user)
   let role = user.role
   useEffect(() => {
     const getScholarship = async () => {
@@ -14,7 +13,6 @@ export const useGetScholarship = () => {
         let res = await axios.get(`${USER_API_END_POINT}/${role}/getScholarship`, {
           withCredentials: true,
         });
-        console.log(res.data.scholarships)
         dispatch(setScholarship(res.data.scholarships));
       } catch (error) {
         console.log(error);

@@ -9,6 +9,7 @@ export const Scholarship = () => {
   useGetScholarship();
   const scholarshipData = useSelector((state) => state.entities.scholarships);
   let user = useSelector((state) => state.auth.user);
+  console.log(user)
   let studentId = user._id;
   console.log(studentId);
   const handleApply = async (scholarshipId) => {

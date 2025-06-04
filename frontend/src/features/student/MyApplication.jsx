@@ -5,16 +5,17 @@ import { USER_API_END_POINT } from "@/utils/constant";
 export const MyApplication = () => {
   let user = useSelector((state) => state.auth.user);
   let studentId = user._id;
-  console.log(user)
+  console.log(user);
   const [applicationData, setApplicationData] = useState([]);
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   console.log(studentId);
   useEffect(() => {
     const getApplicationData = async () => {
       try {
         const res = await axios.get(
-          `${USER_API_END_POINT}/student/viewApplication/${studentId}`,{
-            withCredentials:true
+          `${USER_API_END_POINT}/student/viewApplication/${studentId}`,
+          {
+            withCredentials: true,
           }
         );
         console.log(res);
@@ -26,6 +27,21 @@ export const MyApplication = () => {
     };
     getApplicationData();
   }, []);
+  const getStatusColor = (status) => {
+    switch (status.toLowerCase()) {
+      case "pending":
+        return "text-yellow-600 bg-yellow-100";
+      case "under review":
+        return "text-blue-600 bg-blue-100";
+      case "rejected":
+        return "text-red-600 bg-red-100";
+      case "accepted":
+        return "text-green-600 bg-green-100";
+      default:
+        return "text-gray-600 bg-gray-100";
+    }
+  };
+
   return (
     <>
       <div className="p-6 font-sans">
@@ -40,9 +56,17 @@ export const MyApplication = () => {
                   <span className="font-bold text-blue-600">Title:</span>{" "}
                   {item.scholarship?.title}
                 </h3>
-                <p className="text-gray-700">
-                  <span className="font-medium">Status:</span> {item.status}
+                <p>
+                  <span className="font-medium">Status:</span>{" "}
+                  <span
+                    className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
+                      item.status
+                    )}`}
+                  >
+                    {item.status}
+                  </span>
                 </p>
+
                 <p className="text-gray-700">
                   <span className="font-medium">Amount:</span> $
                   {item.scholarship?.amount}

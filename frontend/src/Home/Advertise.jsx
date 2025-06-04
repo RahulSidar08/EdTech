@@ -1,29 +1,39 @@
-import React from "react";
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 export const Advertise = () => {
   return (
-    <>
-      <section className="relative h-[500px] text-center text-white dark:text-black duration-50">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-          }}
-        ></div>
-
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-25"></div>
-
-        {/* Text Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full">
-          <h2 className="text-3xl font-bold">Join Us Today</h2>
-          <p className="text-lg mt-4 max-w-xl">
-            Sign up now and take the next step in your educational journey.
-          </p>
+    <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-700 dark:to-indigo-800 transition-colors duration-300">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+          Ready to Take Control of Your Academic Future?
+        </h2>
+        
+        <p className="max-w-2xl mx-auto text-lg text-blue-800 mb-8">
+          Join thousands of students who are using EduPortal to streamline their applications, find scholarships, and access valuable educational resources.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Link 
+            to="/signup" 
+            className="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg"
+          >
+            Create Free Account
+          </Link>
+          
+          <Link 
+            to="/scholarship" 
+            className="px-8 py-3 bg-transparent bg-white text-blue-700 border border-white font-medium rounded-lg hover:bg-blue-50  transition-colors duration-300 inline-flex items-center justify-center group"
+          >
+            Explore Scholarships
+            <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
-      </section>
-    </>
+        
+        <p className="text-blue-800 mt-6 text-md">
+          No credit card required. Get started in minutes.
+        </p>
+      </div>
+    </section>
   );
 };

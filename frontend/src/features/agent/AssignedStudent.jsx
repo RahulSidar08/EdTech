@@ -28,7 +28,7 @@ export const AssignedStudent = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col max-h-screen overflow-auto">
         {
           <div className="p-6 space-y-6">
             {studentData.map((item) => (
