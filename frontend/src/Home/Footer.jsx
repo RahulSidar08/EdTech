@@ -1,6 +1,25 @@
 import { GraduationCap, Mail, Github as GitHub, Twitter, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+const socialLinks = [
+  {
+    icon: <Twitter size={18} />,
+    url: "https://twitter.com/"
+  },
+  {
+    icon: <GitHub size={18} />,
+    url: "https://github.com/RahulSidar08"
+  },
+  {
+    icon: <Linkedin size={18} />,
+    url: "https://www.linkedin.com/in/rahul-sidar/"
+  },
+  {
+    icon: <Mail size={18} />,
+    url: "https://www.goole.com/"
+  },
+]
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -17,10 +36,11 @@ export const Footer = () => {
               Empowering students to achieve their academic goals through simplified application tracking and scholarship discovery.
             </p>
             <div className="flex space-x-4">
-              <SocialIcon icon={<Twitter size={18} />} />
-              <SocialIcon icon={<GitHub size={18} />} />
-              <SocialIcon icon={<Linkedin size={18} />} />
-              <SocialIcon icon={<Mail size={18} />} />
+              {socialLinks.map((item, idx) => (
+                <Link className='text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors' key={idx} to={item.url}>
+                  {item.icon}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -70,8 +90,8 @@ export const Footer = () => {
 };
 
 const SocialIcon = ({ icon }) => (
-  <a 
-    href="#" 
+  <a
+    href="#"
     className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
   >
     {icon}
@@ -80,8 +100,8 @@ const SocialIcon = ({ icon }) => (
 
 const FooterLink = ({ to, label }) => (
   <li>
-    <Link 
-      to={to} 
+    <Link
+      to={to}
       className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
     >
       {label}
